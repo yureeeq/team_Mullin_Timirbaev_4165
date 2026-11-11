@@ -7,7 +7,7 @@
 **Тема:** Генерация простых пейзажей (горы, небо, море и т.д.)  
 **Архитектура:** DCGAN (Deep Convolutional Generative Adversarial Network)  
 **Тип данных:** Изображения  
-**Датасет:** [Landscape Pictures](https://www.kaggle.com/datasets/arnaud58/landscape-pictures) (~4.3k изображений с Flickr)
+**Датасет:** [Landscape Pictures](https://www.kaggle.com/datasets/arnaud58/landscape-pictures) (~4.3k изображений)
 
 
 В проекте реализовано обучение DCGAN, генерация изображений, логирование экспериментов в **ClearML** (графики потерь, сэмплы).
