@@ -58,7 +58,7 @@ path = kagglehub.dataset_download("arnaud58/landscape-pictures")
 print(path)
 ```
 
-И кладем все `.jpg` изображения в папку `data/`.
+Или кладем все `.jpg` изображения в папку `data/`.
 
 ## Обучение
 
