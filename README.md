@@ -7,7 +7,7 @@
 **Тема:** Генерация простых пейзажей (горы, небо, море и т.д.)  
 **Архитектура:** DCGAN (Deep Convolutional Generative Adversarial Network)  
 **Тип данных:** Изображения  
-**Датасет:** [Landscape Pictures](https://www.kaggle.com/datasets/arnaud58/landscape-pictures) (~4.3k изображений)
+**Датасет:** [Landscape Pictures](https://www.kaggle.com/datasets/arnaud58/landscape-pictures) (~4.3k изображений с Flickr)
 
 
 В проекте реализовано обучение DCGAN, генерация изображений, логирование экспериментов в **ClearML** (графики потерь, сэмплы).
@@ -32,7 +32,7 @@ Landscape_DCGAN/
 ## Установка
 
 ```bash
-# Рекомендуется использовать виртуальное окружение
+# Используется виртуальное окружение
 python -m venv venv
 source venv/bin/activate          # Linux/macOS
 # или venv\Scripts\activate       # Windows
@@ -42,15 +42,15 @@ pip install -r requirements.txt
 
 ### Настройка ClearML
 
-1. Зарегистрируйтесь на [clear.ml](https://clear.ml)
-2. Получите credentials: `clearml-init` (или создайте `~/clearml.conf`)
-3. При обучении указывайте флаг `--use-clearml`
+1. Регистрация на [clear.ml](https://clear.ml)
+2. Получаем credentials: `clearml-init` (или создаем `~/clearml.conf`)
+3. В обучении указываем флаг `--use-clearml`
 
 ## Загрузка датасета
 
-Датасет скачивается автоматически при первом запуске `train.py` через библиотеку `kagglehub`.
+Скачиваем датасет при первом запуске `train.py` через библиотеку `kagglehub`.
 
-Если хотите скачать вручную:
+Также можно скачать его вручную:
 
 ```python
 import kagglehub
@@ -58,7 +58,7 @@ path = kagglehub.dataset_download("arnaud58/landscape-pictures")
 print(path)
 ```
 
-Или положите все `.jpg` изображения в папку `data/`.
+И кладем все `.jpg` изображения в папку `data/`.
 
 ## Обучение
 
@@ -83,26 +83,26 @@ python train.py \
 - Если включён ClearML — потери и изображения логируются в веб-интерфейс ClearML
 - Чекпоинты сохраняются каждые `save_every` эпох + финальный `generator_best.pt`
 
-**Совет:** Для хорошего качества нужно 50–150 эпох на GPU. На CPU будет очень медленно.
+Для хорошего качества используем GPU. На CPU будет очень медленно.
 
 ## Генерация изображений
 
 ```bash
-# Сгенерировать сетку из 64 изображений
+# Генерируем сетку из 64 изображений
 python generate.py --checkpoint checkpoints/generator_best.pt --num-samples 64 --output samples/my_grid.png
 
-# Сохранить каждое изображение отдельно
+# Сохраняем каждое изображение отдельно
 python generate.py --save-individual
 ```
 
 ## ClearML — графики
 
-После обучения с флагом `--use-clearml` в интерфейсе ClearML вы увидите:
+После обучения с флагом `--use-clearml` в интерфейсе ClearML получаем:
 
 - Графики `Loss/Discriminator` и `Loss/Generator`
 - Изображения сгенерированных пейзажей по эпохам
 - Гиперпараметры эксперимента
-- Автоматически подключённый PyTorch
+- Подключённый PyTorch
 
 
 ## Веб-интерфейс
@@ -111,6 +111,6 @@ python generate.py --save-individual
 streamlit run frontend/app.py
 ```
 
-Откройте браузер по адресу `http://localhost:8501`.  
-Можно генерировать пейзажи, менять seed и скачивать результаты.
+Далее переходим по адресу `http://localhost:8501` в браузере. 
+И уже можно генерировать пейзажи, менять параметры и получать результат.
 
