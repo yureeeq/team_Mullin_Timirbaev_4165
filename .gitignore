@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.env
+
+# Data and models
+data/*
+!data/.gitkeep
+checkpoints/*
+!checkpoints/.gitkeep
+samples/*
+!samples/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ClearML
+.clearml/
